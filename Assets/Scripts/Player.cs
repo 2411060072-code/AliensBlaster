@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         Rigidbody2D rigidBody = GetComponent<Rigidbody2D>();
-        rigidBody.linearVelocity = new Vector2(horizontal, rigidBody.linearVelocity.y);
+        var vertical = rigidBody.linearVelocity.y;
+        if (Input.GetKeyDown(KeyCode.Space)) vertical = 5;
+        rigidBody.linearVelocity = new Vector2(horizontal, vertical);
     }
 }
