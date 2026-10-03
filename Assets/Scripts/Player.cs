@@ -11,11 +11,14 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidBody;
     [SerializeField] private bool _IsGrounded = false;
     [SerializeField] private float _horizontalVelocity = 3;
+    private Sprite _defaultSpriteRenderer;
+    [SerializeField] private Sprite _jumpingSpriteRenderer;
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidBody = GetComponent<Rigidbody2D>();
+        _defaultSpriteRenderer = GetComponent<SpriteRenderer>().sprite;
     }
 
     private void OnDrawGizmos()
@@ -32,9 +35,13 @@ public class Player : MonoBehaviour
         if (hit.collider)
         {
             _IsGrounded = true;
+            _spriteRenderer.sprite = _defaultSpriteRenderer;
         }
-        else _IsGrounded = false;
-
+        else 
+        {
+            _IsGrounded = false;
+            _spriteRenderer.sprite = _jumpingSpriteRenderer;
+        }
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = _rigidBody.linearVelocity.y;
 
