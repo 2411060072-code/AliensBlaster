@@ -3,6 +3,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private float _jumpEndTime;
+    [SerializeField] private float _jumpVelocity = 5;
+    [SerializeField] private float _jumpDuration = 0.5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,12 +21,12 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _jumpEndTime = Time.time + 1;
+            _jumpEndTime = Time.time + _jumpDuration;
         }
 
         if (Input.GetKey(KeyCode.Space) && _jumpEndTime > Time.time)
         {
-            vertical = 5;
+            vertical = _jumpVelocity;
         }
         rigidBody.linearVelocity = new Vector2(horizontal, vertical);
     }
