@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     private Vector2 _origin;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidBody;
-    [SerializeField] private bool _IsGrounded;
+    [SerializeField] private bool _IsGrounded = false;
+    [SerializeField] private float _horizontalVelocity = 3;
 
     private void Awake()
     {
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _origin = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y);
+        _origin = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y - 0.1f);
         RaycastHit2D hit = Physics2D.Raycast(_origin, Vector2.down, 0.1f);
         if (hit.collider)
         {
@@ -46,6 +47,8 @@ public class Player : MonoBehaviour
         {
             vertical = _jumpVelocity;
         }
+
+        horizontal *= _horizontalVelocity;
         _rigidBody.linearVelocity = new Vector2(horizontal, vertical);
     }
 }
