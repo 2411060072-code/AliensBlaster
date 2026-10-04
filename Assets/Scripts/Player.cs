@@ -1,3 +1,4 @@
+using System;
 using System.Xml.Serialization;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _horizontalVelocity = 3;
     private Sprite _defaultSpriteRenderer;
     [SerializeField] private Sprite _jumpingSpriteRenderer;
+    private float _horizontal;
+    private float _vertical;
 
     private void Awake()
     {
@@ -35,15 +38,13 @@ public class Player : MonoBehaviour
         if (hit.collider)
         {
             _IsGrounded = true;
-            _spriteRenderer.sprite = _defaultSpriteRenderer;
         }
         else 
         {
             _IsGrounded = false;
-            _spriteRenderer.sprite = _jumpingSpriteRenderer;
         }
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = _rigidBody.linearVelocity.y;
+        _horizontal = Input.GetAxis("Horizontal");
+        _vertical = _rigidBody.linearVelocity.y;
 
         if (Input.GetKeyDown(KeyCode.Space) && _IsGrounded == true)
         {
@@ -52,10 +53,29 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && _jumpEndTime > Time.time)
         {
-            vertical = _jumpVelocity;
+            _vertical = _jumpVelocity;
         }
 
-        horizontal *= _horizontalVelocity;
-        _rigidBody.linearVelocity = new Vector2(horizontal, vertical);
+        _horizontal *= _horizontalVelocity;
+        _rigidBody.linearVelocity = new Vector2(_horizontal, _vertical);
+
+        UpdateSprite();
+    }
+
+    private void UpdateSprite()
+    {
+        if (_IsGrounded == true)
+            _spriteRenderer.sprite = _defaultSpriteRenderer;
+        else 
+            _spriteRenderer.sprite = _jumpingSpriteRenderer;
+
+        if (_horizontal > 0)
+        {
+            _spriteRenderer.flipX = false;
+        }
+        else if (_horizontal < 0)
+        {
+            _spriteRenderer.flipX = true;
+        }
     }
 }
