@@ -1,5 +1,6 @@
 using System;
 using System.Xml.Serialization;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _IsGrounded = false;
     [SerializeField] private float _horizontalVelocity = 3;
     private Sprite _defaultSpriteRenderer;
+    private Animator _animator;
     [SerializeField] private Sprite _jumpingSpriteRenderer;
     private float _horizontal;
     private float _vertical;
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidBody = GetComponent<Rigidbody2D>();
         _defaultSpriteRenderer = GetComponent<SpriteRenderer>().sprite;
+        _animator = GetComponent<Animator>();
     }
 
     private void OnDrawGizmos()
@@ -64,10 +67,8 @@ public class Player : MonoBehaviour
 
     private void UpdateSprite()
     {
-        if (_IsGrounded == true)
-            _spriteRenderer.sprite = _defaultSpriteRenderer;
-        else 
-            _spriteRenderer.sprite = _jumpingSpriteRenderer;
+        _animator.SetBool("IsGrounded", _IsGrounded);
+        _animator.SetFloat("HorizontalSpeed", Math.Abs(_horizontal));
 
         if (_horizontal > 0)
         {
