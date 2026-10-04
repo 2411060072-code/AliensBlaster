@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Sprite _jumpingSpriteRenderer;
     private float _horizontal;
     private float _vertical;
+    [SerializeField] private LayerMask layerMask;
 
     private void Awake()
     {
@@ -36,8 +37,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _origin = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y - 0.1f);
-        RaycastHit2D hit = Physics2D.Raycast(_origin, Vector2.down, 0.1f);
+        _origin = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y);
+        RaycastHit2D hit = Physics2D.Raycast(_origin, Vector2.down, 0.1f, layerMask);
         if (hit.collider)
         {
             _IsGrounded = true;

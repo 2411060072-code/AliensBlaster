@@ -795,7 +795,8 @@ GameObject:
   - component: {fileID: 1758532623}
   - component: {fileID: 1758532624}
   - component: {fileID: 1758532625}
-  m_Layer: 0
+  - component: {fileID: 1758532626}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -950,7 +951,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.2421875, y: -0.1953125}
+    - - {x: 0.2261267, y: -0.19760692}
       - {x: 0.171875, y: -0.109375}
       - {x: 0.2578125, y: -0.0390625}
       - {x: 0.2578125, y: 0.234375}
@@ -960,10 +961,13 @@ PolygonCollider2D:
       - {x: -0.2578125, y: 0.2421875}
       - {x: -0.2578125, y: -0.03125}
       - {x: -0.25, y: -0.046875}
-      - {x: -0.2578125, y: -0.359375}
+      - {x: -0.23049356, y: -0.19151449}
+      - {x: -0.14119835, y: -0.3004198}
+      - {x: -0.13700391, y: -0.35735905}
       - {x: 0.1328125, y: -0.359375}
       - {x: 0.140625, y: -0.3515625}
-      - {x: 0.2578125, y: -0.28125}
+      - {x: 0.13923356, y: -0.29368865}
+      - {x: 0.1894796, y: -0.2602439}
     - - {x: 0.171875, y: 0.15625}
       - {x: 0.1640625, y: 0.1875}
       - {x: 0.1484375, y: 0.2265625}
@@ -1016,6 +1020,9 @@ MonoBehaviour:
   _IsGrounded: 0
   _horizontalVelocity: 3
   _jumpingSpriteRenderer: {fileID: -2799364741958955822, guid: caa5114e3af464d42932bd2118a0c83f, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 55
 --- !u!95 &1758532625
 Animator:
   serializedVersion: 7
@@ -1038,6 +1045,43 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &1758532626
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758532618}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.55, y: 0.7}
+  m_Direction: 0
 --- !u!1 &1952055689
 GameObject:
   m_ObjectHideFlags: 0
