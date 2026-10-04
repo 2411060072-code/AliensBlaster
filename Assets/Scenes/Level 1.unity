@@ -1022,7 +1022,8 @@ MonoBehaviour:
   _jumpingSpriteRenderer: {fileID: -2799364741958955822, guid: caa5114e3af464d42932bd2118a0c83f, type: 3}
   layerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 0
+  _footOfSet: 0.3
 --- !u!95 &1758532625
 Animator:
   serializedVersion: 7

@@ -29,10 +29,12 @@ public class Player : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (_spriteRenderer == null) return;
+
         Gizmos.color = Color.red;
 
         //middle
-        _origin = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y);
+        Vector2 _origin = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y);
         Gizmos.DrawLine(_origin, _origin + Vector2.down * 0.1f);
 
         //left
@@ -47,9 +49,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _origin = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y);
-        RaycastHit2D hit = Physics2D.Raycast(_origin, Vector2.down, 0.1f, layerMask);
-        if (hit.collider)
+        Vector2 _originMidle = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y);
+        Vector2 _originLeft = new Vector2(transform.position.x - _footOfSet, transform.position.y - _spriteRenderer.bounds.extents.y);
+        Vector2 _originRight = new Vector2(transform.position.x + _footOfSet, transform.position.y - _spriteRenderer.bounds.extents.y);
+
+        RaycastHit2D hitMidle = Physics2D.Raycast(_originMidle, Vector2.down, 0.1f, layerMask);
+        RaycastHit2D hitLeft = Physics2D.Raycast(_originLeft, Vector2.down, 0.1f, layerMask);
+        RaycastHit2D hitRight = Physics2D.Raycast(_originRight, Vector2.down, 0.1f, layerMask);
+
+        if (hitMidle.collider || hitLeft.collider || hitRight.collider)
         {
             _IsGrounded = true;
         }
@@ -57,6 +65,7 @@ public class Player : MonoBehaviour
         {
             _IsGrounded = false;
         }
+
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = _rigidBody.linearVelocity.y;
 
