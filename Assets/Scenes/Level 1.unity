@@ -794,8 +794,9 @@ GameObject:
   - component: {fileID: 1758532622}
   - component: {fileID: 1758532623}
   - component: {fileID: 1758532624}
+  - component: {fileID: 1758532625}
   m_Layer: 0
-  m_Name: p2_front_0
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1015,6 +1016,28 @@ MonoBehaviour:
   _IsGrounded: 0
   _horizontalVelocity: 3
   _jumpingSpriteRenderer: {fileID: -2799364741958955822, guid: caa5114e3af464d42932bd2118a0c83f, type: 3}
+--- !u!95 &1758532625
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758532618}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 506bcf779313910479a600f51e24ab9f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1952055689
 GameObject:
   m_ObjectHideFlags: 0
