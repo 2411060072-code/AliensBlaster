@@ -13,24 +13,34 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidBody;
     [SerializeField] private bool _IsGrounded = false;
     [SerializeField] private float _horizontalVelocity = 3;
-    private Sprite _defaultSpriteRenderer;
     private Animator _animator;
     [SerializeField] private Sprite _jumpingSpriteRenderer;
     private float _horizontal;
     private float _vertical;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private float _footOfSet = 0.3f;
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidBody = GetComponent<Rigidbody2D>();
-        _defaultSpriteRenderer = GetComponent<SpriteRenderer>().sprite;
         _animator = GetComponent<Animator>();
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
+
+        //middle
+        _origin = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y);
+        Gizmos.DrawLine(_origin, _origin + Vector2.down * 0.1f);
+
+        //left
+        _origin = new Vector2(transform.position.x - _footOfSet, transform.position.y - _spriteRenderer.bounds.extents.y);
+        Gizmos.DrawLine(_origin, _origin + Vector2.down * 0.1f);
+
+        //right
+        _origin = new Vector2(transform.position.x + _footOfSet, transform.position.y - _spriteRenderer.bounds.extents.y);
         Gizmos.DrawLine(_origin, _origin + Vector2.down * 0.1f);
     }
 
