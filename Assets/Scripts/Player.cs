@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float _jumpEndTime;
     [SerializeField] private float _jumpVelocity = 5;
     [SerializeField] private float _jumpDuration = 0.5f;
+    [SerializeField] private bool _IsGrounded = false;
+    [SerializeField] private float _horizontalVelocity = 3;
+    [SerializeField] private Sprite _jumpingSpriteRenderer;
+    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private float _footOfSet = 0.3f;
+    private float _horizontal;
+    private float _vertical;
+    private Animator _animator;
     private Vector2 _origin;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidBody;
-    [SerializeField] private bool _IsGrounded = false;
-    [SerializeField] private float _horizontalVelocity = 3;
-    private Animator _animator;
-    [SerializeField] private Sprite _jumpingSpriteRenderer;
-    private float _horizontal;
-    private float _vertical;
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private float _footOfSet = 0.3f;
+    private float _jumpEndTime;
 
     private void Awake()
     {
@@ -49,22 +49,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 _originMidle = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y);
-        Vector2 _originLeft = new Vector2(transform.position.x - _footOfSet, transform.position.y - _spriteRenderer.bounds.extents.y);
-        Vector2 _originRight = new Vector2(transform.position.x + _footOfSet, transform.position.y - _spriteRenderer.bounds.extents.y);
-
-        RaycastHit2D hitMidle = Physics2D.Raycast(_originMidle, Vector2.down, 0.1f, layerMask);
-        RaycastHit2D hitLeft = Physics2D.Raycast(_originLeft, Vector2.down, 0.1f, layerMask);
-        RaycastHit2D hitRight = Physics2D.Raycast(_originRight, Vector2.down, 0.1f, layerMask);
-
-        if (hitMidle.collider || hitLeft.collider || hitRight.collider)
-        {
-            _IsGrounded = true;
-        }
-        else 
-        {
-            _IsGrounded = false;
-        }
+        UpdateGrounding();
 
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = _rigidBody.linearVelocity.y;
@@ -83,6 +68,26 @@ public class Player : MonoBehaviour
         _rigidBody.linearVelocity = new Vector2(_horizontal, _vertical);
 
         UpdateSprite();
+    }
+
+    private void UpdateGrounding()
+    {
+        Vector2 _originMidle = new Vector2(transform.position.x, transform.position.y - _spriteRenderer.bounds.extents.y);
+        Vector2 _originLeft = new Vector2(transform.position.x - _footOfSet, transform.position.y - _spriteRenderer.bounds.extents.y);
+        Vector2 _originRight = new Vector2(transform.position.x + _footOfSet, transform.position.y - _spriteRenderer.bounds.extents.y);
+
+        RaycastHit2D hitMidle = Physics2D.Raycast(_originMidle, Vector2.down, 0.1f, layerMask);
+        RaycastHit2D hitLeft = Physics2D.Raycast(_originLeft, Vector2.down, 0.1f, layerMask);
+        RaycastHit2D hitRight = Physics2D.Raycast(_originRight, Vector2.down, 0.1f, layerMask);
+
+        if (hitMidle.collider || hitLeft.collider || hitRight.collider)
+        {
+            _IsGrounded = true;
+        }
+        else
+        {
+            _IsGrounded = false;
+        }
     }
 
     private void UpdateSprite()
