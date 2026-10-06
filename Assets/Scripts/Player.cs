@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private float _horizontal;
     private float _vertical;
     private Animator _animator;
+    private AudioSource _audioSource;
     private Vector2 _origin;
     private RaycastHit2D _hit;
     private SpriteRenderer _spriteRenderer;
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnDrawGizmos()
@@ -68,6 +70,7 @@ public class Player : MonoBehaviour
         {
             _jumpEndTime = Time.time + _jumpDuration;
             _numberOfJumps--;
+            _audioSource.Play();
         }
 
         if (Input.GetKey(KeyCode.Space) && _jumpEndTime > Time.time)
