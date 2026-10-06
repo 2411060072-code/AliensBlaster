@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidBody;
     private float _jumpEndTime;
-    
 
     private void Awake()
     {
