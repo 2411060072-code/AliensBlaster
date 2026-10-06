@@ -1016,14 +1016,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   _jumpVelocity: 5
-  _jumpDuration: 0.5
-  _IsGrounded: 0
+  _jumpDuration: 0.2
+  _isGrounded: 0
   _horizontalVelocity: 3
-  _jumpingSpriteRenderer: {fileID: -2799364741958955822, guid: caa5114e3af464d42932bd2118a0c83f, type: 3}
+  _jumpingSpriteRenderer: {fileID: 3810435283219779972, guid: a8bf72ef372ddf84f8db14aa9a39c20b, type: 3}
   _layerMask:
     serializedVersion: 2
     m_Bits: 55
   _footOfSet: 0.3
+  _numberOfJumps: 2
 --- !u!95 &1758532625
 Animator:
   serializedVersion: 7
