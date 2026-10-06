@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && _numberOfJumps > 0)
         {
-            _audioSource.pitch = _numberOfJumps > 1 ? 1 : 0.8f;
+            _audioSource.pitch = _numberOfJumps > 1 ? 1 : 1.2f;
             _jumpEndTime = Time.time + _jumpDuration;
             _numberOfJumps--;
             _audioSource.Play();
