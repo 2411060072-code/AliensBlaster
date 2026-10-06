@@ -1020,7 +1020,7 @@ MonoBehaviour:
   _IsGrounded: 0
   _horizontalVelocity: 3
   _jumpingSpriteRenderer: {fileID: -2799364741958955822, guid: caa5114e3af464d42932bd2118a0c83f, type: 3}
-  layerMask:
+  _layerMask:
     serializedVersion: 2
     m_Bits: 55
   _footOfSet: 0.3
