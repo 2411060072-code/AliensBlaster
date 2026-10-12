@@ -41,8 +41,11 @@ TagManager:
   - name: Background
     uniqueID: 3994278649
     locked: 0
-  - name: Dirt
-    uniqueID: 3721712861
+  - name: Player
+    uniqueID: 2469424653
+    locked: 0
+  - name: Water
+    uniqueID: 1948218031
     locked: 0
   - name: Default
     uniqueID: 0
