@@ -1,14 +1,17 @@
+using System;
 using UnityEngine;
 
 public class Spring : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
+    private AudioSource _audioSource;
     private Sprite _defaultSprite;
     [SerializeField] private Sprite _sprungSprite;
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _audioSource = GetComponent<AudioSource>();
         _defaultSprite = _spriteRenderer.sprite;
     }
 
@@ -17,6 +20,7 @@ public class Spring : MonoBehaviour
         if (collision.collider.CompareTag("Player")) 
         {
             _spriteRenderer.sprite = _sprungSprite;
+            _audioSource.Play();
         }
     }
 
