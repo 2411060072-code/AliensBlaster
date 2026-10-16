@@ -2158,7 +2158,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1646946243651833338, guid: 7d3f9b98ce7e9c14ca74e484c869f90c, type: 3}
       propertyPath: m_Size.x
-      value: 0.54687506
+      value: 0.54267544
       objectReference: {fileID: 0}
     - target: {fileID: 2908254615267085267, guid: 7d3f9b98ce7e9c14ca74e484c869f90c, type: 3}
       propertyPath: m_Name
@@ -2174,11 +2174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4315559111237147860, guid: 7d3f9b98ce7e9c14ca74e484c869f90c, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 0.54687506
+      value: 0.41767558
       objectReference: {fileID: 0}
     - target: {fileID: 7288215869029583945, guid: 7d3f9b98ce7e9c14ca74e484c869f90c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.25064
+      value: 9.7464
       objectReference: {fileID: 0}
     - target: {fileID: 7288215869029583945, guid: 7d3f9b98ce7e9c14ca74e484c869f90c, type: 3}
       propertyPath: m_LocalPosition.y
